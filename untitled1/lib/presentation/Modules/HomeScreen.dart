@@ -5,9 +5,8 @@ import 'package:untitled1/Blocs/FavBlocCubit.dart';
 import 'package:untitled1/Blocs/FavBlocState.dart';
 import 'package:untitled1/constant/Screens.dart';
 import 'package:untitled1/models/Product.dart';
-import 'package:untitled1/presentation/Modules/Favscreen.dart';
-
 import '../widget/ondrawer.dart';
+
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -156,6 +155,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       size: 40,
                     ),
                   ),
+
                   label: ''),
             ],
           ),
@@ -320,30 +320,30 @@ class _HomeScreenState extends State<HomeScreen> {
                           itemCount: products.length,
                           scrollDirection: Axis.horizontal,
                           itemBuilder: (context, index) {
-                            return InkWell(
-                              onTap: () {
-                                Navigator.pushNamed(context, FavScreenPath);
-                              },
-                              child: Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: BlocConsumer<FavCubit, FavState>(
-                                    listener: (context, state) {},
-                                    builder: (context, state) {
-                                      for (var product in favlist.favList) {
-                                        if (product == products[index]) {
-                                          return InkWell(
-                                            onTap: () {
+                            return Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: BlocConsumer<FavCubit, FavState>(
+                                  listener: (context, state) {},
+                                  builder: (context, state) {
+                                    for (var product in favlist.favList) {
+                                      if (product == products[index]) {
+                                        return InkWell(
+                                          onTap: () {
 //favlist.removeProduct(products[index]);
-                                            },
-                                            child: Badge(
-                                              badgeColor: Colors.grey[100]!,
-                                              badgeContent: const Icon(
-                                                Icons.favorite,
-                                                color: Colors.red,
-                                              ),
-                                              child: Column(
-                                                children: [
-                                                  Container(
+                                          },
+                                          child: Badge(
+                                            badgeColor: Colors.grey[100]!,
+                                            badgeContent: const Icon(
+                                              Icons.favorite,
+                                              color: Colors.red,
+                                            ),
+                                            child: Column(
+                                              children: [
+                                                InkWell(
+                                                  onTap: () {
+                                                    Navigator.pushNamed(context, FavScreenPath);
+                                                  },
+                                                  child: Container(
                                                     color: Colors.white,
                                                     child: Hero(
                                                       tag:
@@ -363,102 +363,107 @@ class _HomeScreenState extends State<HomeScreen> {
                                                     height: 160,
                                                     width: 250,
                                                   ),
-                                                  Container(
-                                                    color: Colors.white,
-                                                    height: 70,
-                                                    width: 250,
-                                                    child: Row(
-                                                      mainAxisAlignment:
-                                                          MainAxisAlignment
-                                                              .spaceBetween,
-                                                      children: [
-                                                        Padding(
-                                                          padding:
-                                                              const EdgeInsets
-                                                                  .all(8.0),
-                                                          child: Column(
-                                                            children: [
-                                                              Hero(
-                                                                tag:
-                                                                    "name-${name[index]}",
-                                                                child: Text(
-                                                                  name[index],
-                                                                  style: const TextStyle(
-                                                                      color: Colors
-                                                                          .black,
-                                                                      fontSize:
-                                                                          16,
-                                                                      fontWeight:
-                                                                          FontWeight
-                                                                              .bold),
-                                                                ),
+                                                ),
+                                                Container(
+                                                  color: Colors.white,
+                                                  height: 70,
+                                                  width: 250,
+                                                  child: Row(
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .spaceBetween,
+                                                    children: [
+                                                      Padding(
+                                                        padding:
+                                                            const EdgeInsets
+                                                                .all(8.0),
+                                                        child: Column(
+                                                          children: [
+                                                            Hero(
+                                                              tag:
+                                                                  "name-${name[index]}",
+                                                              child: Text(
+                                                                name[index],
+                                                                style: const TextStyle(
+                                                                    color: Colors
+                                                                        .black,
+                                                                    fontSize:
+                                                                        16,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .bold),
                                                               ),
-                                                              Hero(
-                                                                tag:
-                                                                    "price-${price[index]}",
-                                                                child: Text(
-                                                                  price[index],
-                                                                  style: const TextStyle(
-                                                                      color: Colors
-                                                                          .lightGreen,
-                                                                      fontSize:
-                                                                          16),
-                                                                ),
+                                                            ),
+                                                            Hero(
+                                                              tag:
+                                                                  "price-${price[index]}",
+                                                              child: Text(
+                                                                price[index],
+                                                                style: const TextStyle(
+                                                                    color: Colors
+                                                                        .lightGreen,
+                                                                    fontSize:
+                                                                        16),
                                                               ),
-                                                            ],
-                                                          ),
+                                                            ),
+                                                          ],
                                                         ),
-                                                        Padding(
-                                                          padding:
-                                                              const EdgeInsets
-                                                                  .all(8.0),
-                                                          child: Column(
-                                                            children: [
-                                                              Container(
-                                                                decoration:
-                                                                    BoxDecoration(
-                                                                  color: Colors
-                                                                      .lightGreen,
-                                                                  borderRadius:
-                                                                      BorderRadius
-                                                                          .circular(
-                                                                              10),
-                                                                ),
-                                                                width: 40,
-                                                                height: 40,
-                                                                child:
-                                                                    const Icon(
-                                                                  Icons
-                                                                      .add_shopping_cart_outlined,
-                                                                  size: 25,
-                                                                  color: Colors
-                                                                      .white,
-                                                                ),
+                                                      ),
+                                                      Padding(
+                                                        padding:
+                                                            const EdgeInsets
+                                                                .all(8.0),
+                                                        child: Column(
+                                                          children: [
+                                                            Container(
+                                                              decoration:
+                                                                  BoxDecoration(
+                                                                color: Colors
+                                                                    .lightGreen,
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                            10),
                                                               ),
-                                                            ],
-                                                          ),
-                                                        )
-                                                      ],
-                                                    ),
-                                                  )
-                                                ],
-                                              ),
+                                                              width: 40,
+                                                              height: 40,
+                                                              child:
+                                                                  const Icon(
+                                                                Icons
+                                                                    .add_shopping_cart_outlined,
+                                                                size: 25,
+                                                                color: Colors
+                                                                    .white,
+                                                              ),
+                                                            ),
+                                                          ],
+                                                        ),
+                                                      )
+                                                    ],
+                                                  ),
+                                                )
+                                              ],
                                             ),
-                                          );
-                                        }
-                                      }
-                                      return InkWell(
-                                        onTap: () {
-                                          // favlist.addProduct(products[index]);
-                                        },
-                                        child: Badge(
-                                          badgeColor: Colors.grey[100]!,
-                                          badgeContent: const Icon(
-                                            Icons.favorite_border_outlined,
                                           ),
-                                          child: Column(
-                                            children: [
-                                              Container(
+                                        );
+                                      }
+                                    }
+                                    return InkWell(
+                                      onTap: () {
+                                        // favlist.addProduct(products[index]);
+                                      },
+                                      child: Badge(
+                                        badgeColor: Colors.grey[100]!,
+                                        badgeContent: const Icon(
+                                          Icons.favorite_border_outlined,
+                                        ),
+                                        child: Column(
+                                          children: [
+                                            InkWell(
+                                              onTap: () {
+                                                Navigator.pushNamed(context, FavScreenPath);
+                                              },
+                                              child: Container(
                                                 color: Colors.white,
                                                 child: Hero(
                                                   tag:
@@ -478,87 +483,87 @@ class _HomeScreenState extends State<HomeScreen> {
                                                 height: 160,
                                                 width: 250,
                                               ),
-                                              Container(
-                                                color: Colors.white,
-                                                height: 70,
-                                                width: 250,
-                                                child: Row(
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment
-                                                          .spaceBetween,
-                                                  children: [
-                                                    Padding(
-                                                      padding:
-                                                          const EdgeInsets.all(
-                                                              8.0),
-                                                      child: Column(
-                                                        children: [
-                                                          Hero(
-                                                            tag:
-                                                                "name-${name[index]}",
-                                                            child: Text(
-                                                              name[index],
-                                                              style: const TextStyle(
-                                                                  color: Colors
-                                                                      .black,
-                                                                  fontSize: 16,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .bold),
-                                                            ),
+                                            ),
+                                            Container(
+                                              color: Colors.white,
+                                              height: 70,
+                                              width: 250,
+                                              child: Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceBetween,
+                                                children: [
+                                                  Padding(
+                                                    padding:
+                                                        const EdgeInsets.all(
+                                                            8.0),
+                                                    child: Column(
+                                                      children: [
+                                                        Hero(
+                                                          tag:
+                                                              "name-${name[index]}",
+                                                          child: Text(
+                                                            name[index],
+                                                            style: const TextStyle(
+                                                                color: Colors
+                                                                    .black,
+                                                                fontSize: 16,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .bold),
                                                           ),
-                                                          Hero(
-                                                            tag:
-                                                                "price-${price[index]}",
-                                                            child: Text(
-                                                              price[index],
-                                                              style: const TextStyle(
-                                                                  color: Colors
-                                                                      .lightGreen,
-                                                                  fontSize: 16),
-                                                            ),
+                                                        ),
+                                                        Hero(
+                                                          tag:
+                                                              "price-${price[index]}",
+                                                          child: Text(
+                                                            price[index],
+                                                            style: const TextStyle(
+                                                                color: Colors
+                                                                    .lightGreen,
+                                                                fontSize: 16),
                                                           ),
-                                                        ],
-                                                      ),
+                                                        ),
+                                                      ],
                                                     ),
-                                                    Padding(
-                                                      padding:
-                                                          const EdgeInsets.all(
-                                                              8.0),
-                                                      child: Column(
-                                                        children: [
-                                                          Container(
-                                                            decoration:
-                                                                BoxDecoration(
-                                                              color: Colors
-                                                                  .lightGreen,
-                                                              borderRadius:
-                                                                  BorderRadius
-                                                                      .circular(
-                                                                          10),
-                                                            ),
-                                                            width: 40,
-                                                            height: 40,
-                                                            child: const Icon(
-                                                              Icons
-                                                                  .add_shopping_cart_outlined,
-                                                              size: 25,
-                                                              color:
-                                                                  Colors.white,
-                                                            ),
+                                                  ),
+                                                  Padding(
+                                                    padding:
+                                                        const EdgeInsets.all(
+                                                            8.0),
+                                                    child: Column(
+                                                      children: [
+                                                        Container(
+                                                          decoration:
+                                                              BoxDecoration(
+                                                            color: Colors
+                                                                .lightGreen,
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        10),
                                                           ),
-                                                        ],
-                                                      ),
-                                                    )
-                                                  ],
-                                                ),
-                                              )
-                                            ],
-                                          ),
+                                                          width: 40,
+                                                          height: 40,
+                                                          child: const Icon(
+                                                            Icons
+                                                                .add_shopping_cart_outlined,
+                                                            size: 25,
+                                                            color:
+                                                                Colors.white,
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  )
+                                                ],
+                                              ),
+                                            )
+                                          ],
                                         ),
-                                      );
-                                    }),
-                              ),
+                                      ),
+                                    );
+                                  }),
                             );
                           }),
                     ),
@@ -677,23 +682,28 @@ class _HomeScreenState extends State<HomeScreen> {
                                 ),
                                 child: Column(
                                   children: [
-                                    Container(
-                                      color: Colors.white,
-                                      child: Hero(
-                                        tag: "image-${categoryimage[index]}",
-                                        child: Image(
-                                          fit: BoxFit.cover,
-                                          image:
-                                              AssetImage(categoryimage[index]),
-                                          width: 180,
-                                          height: MediaQuery.of(context)
-                                                  .size
-                                                  .height *
-                                              .50,
+                                    InkWell(
+                                      onTap: () {
+                                        Navigator.pushNamed(context, FavScreenPath);
+                                      },
+                                      child: Container(
+                                        color: Colors.white,
+                                        child: Hero(
+                                          tag: "image-${categoryimage[index]}",
+                                          child: Image(
+                                            fit: BoxFit.cover,
+                                            image:
+                                                AssetImage(categoryimage[index]),
+                                            width: 180,
+                                            height: MediaQuery.of(context)
+                                                    .size
+                                                    .height *
+                                                .50,
+                                          ),
                                         ),
+                                        height: 160,
+                                        width: 250,
                                       ),
-                                      height: 160,
-                                      width: 250,
                                     ),
                                     Container(
                                       color: Colors.white,

@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import 'package:untitled1/constant/Screens.dart';
 
@@ -9,6 +10,72 @@ class SettingScreen extends StatefulWidget {
 }
 
 class _SettingScreenState extends State<SettingScreen> {
+
+  Future<void> showInformationDialoug(BuildContext? context)async{
+    return await showDialog(context: context!, builder: (context){
+      return AlertDialog(
+        content: Form(
+          child: Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(15),
+
+            ),
+            child: Column(
+
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Center(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: const[
+                        Text(' Language',style: TextStyle(fontSize: 20),),
+                      ],
+                    ),
+                  ),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Column(
+                      children:const [
+                        Text('English',style: TextStyle(fontSize: 20),),
+                      ],
+                    ),
+                    Column(
+                      children:const [
+                       Icon(Icons.check_outlined,color: Colors.lightGreen,)
+                      ],
+                    ),
+                  ],
+                ),
+                Row(
+                  children: [
+                    SizedBox(
+                        width: MediaQuery.of(context).size.width*.62,
+                        child:const Divider(
+                          color: Colors.black26,
+                          thickness: 1.5,
+                        )),
+                  ],
+                ),
+                Row(
+                  children:const [
+                    Text('Arabic',style: TextStyle(fontSize: 20),),
+                  ],
+                ),
+
+              ],
+            ),
+          ),
+        ),
+
+      );
+    });
+
+
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -73,24 +140,24 @@ class _SettingScreenState extends State<SettingScreen> {
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: InkWell(
-                onTap: (){
-                  Navigator.pushNamed(context, AccontInfoPath);
-                },
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: const [
-                    Text(
-                      '  Account Information',
-                      style: TextStyle(fontSize: 18, color: Colors.black),
-                    ),
-                    Icon(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children:  [
+                  const  Text(
+                    '  Account Information',
+                    style: TextStyle(fontSize: 18, color: Colors.black),
+                  ),
+                  InkWell(
+                    onTap: (){
+                      Navigator.pushNamed(context, AccontInfoPath);
+                    },
+                    child:const Icon(
                       Icons.arrow_forward_ios_rounded,
                       color: Colors.grey,
                       size: 25,
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
             const SizedBox(
@@ -101,24 +168,24 @@ class _SettingScreenState extends State<SettingScreen> {
                 )),
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: InkWell(
-                onTap: (){
-                  Navigator.pushNamed(context, AddressInfoPath);
-                },
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: const [
-                    Text(
-                      '  Address Information ',
-                      style: TextStyle(fontSize: 18, color: Colors.black),
-                    ),
-                    Icon(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children:  [
+                  const Text(
+                    '  Address Information ',
+                    style: TextStyle(fontSize: 18, color: Colors.black),
+                  ),
+                  InkWell(
+                    onTap: (){
+                      Navigator.pushNamed(context, AddressInfoPath);
+                    },
+                    child:const Icon(
                       Icons.arrow_forward_ios_rounded,
                       color: Colors.grey,
                       size: 25,
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
             const SizedBox(
@@ -129,24 +196,26 @@ class _SettingScreenState extends State<SettingScreen> {
                 )),
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: InkWell(
-                onTap: (){
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children:  [
+                  const   Text(
+                    '  Language',
+                    style: TextStyle(fontSize: 18, color: Colors.black),
+                  ),
+                  InkWell(
 
-                },
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: const [
-                    Text(
-                      '  Language',
-                      style: TextStyle(fontSize: 18, color: Colors.black),
-                    ),
-                    Icon(
+                    onTap: ()async {
+await showInformationDialoug(context);
+
+                    },
+                    child:const Icon(
                       Icons.arrow_forward_ios_rounded,
                       color: Colors.grey,
                       size: 25,
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
             const SizedBox(
@@ -157,24 +226,24 @@ class _SettingScreenState extends State<SettingScreen> {
                 )),
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: InkWell(
-                onTap: (){
-                  Navigator.pushNamed(context, BMRScreenPath);
-                },
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: const [
-                    Text(
-                      '  Recalculate Bmr',
-                      style: TextStyle(fontSize: 18, color: Colors.black),
-                    ),
-                    Icon(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children:  [
+                  const  Text(
+                    '  Recalculate Bmr',
+                    style: TextStyle(fontSize: 18, color: Colors.black),
+                  ),
+                  InkWell(
+                    onTap: (){
+                      Navigator.pushNamed(context, BMRScreenPath);
+                    },
+                    child:const Icon(
                       Icons.arrow_forward_ios_rounded,
                       color: Colors.grey,
                       size: 25,
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
             const SizedBox(
@@ -205,11 +274,11 @@ class _SettingScreenState extends State<SettingScreen> {
                   thickness: 1.5,
                 )),
             Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(12.0),
               child: Row(
                 children: const [
                   Text(
-                    'Log Out ',
+                    ' Log Out ',
                     style: TextStyle(fontSize: 18),
                   ),
                 ],

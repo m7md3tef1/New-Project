@@ -9,6 +9,8 @@ class CustomTextFormField extends StatefulWidget {
   var suffix;
   var color;
   bool? secure;
+  var validator;
+  var onSaved;
   var keyboardType = TextInputType.visiblePassword;
 
   TextEditingController? controller;
@@ -22,7 +24,9 @@ class CustomTextFormField extends StatefulWidget {
       this.hint,
       this.icondata,
       this.secure,
-      this.suffix
+      this.suffix,
+      this.validator,
+      this.onSaved
       }) : super(key: key);
 
   @override
@@ -53,18 +57,28 @@ class _CustomTextFieldState extends State<CustomTextFormField> {
             Padding(
               padding: const EdgeInsets.all(6.0),
               child: Container(
-                height: MediaQuery.of(context).size.height*.07,
+                height: MediaQuery.of(context).size.height*.08,
                 width: MediaQuery.of(context).size.width,
-                decoration: BoxDecoration(
-                  border: Border.all(color: Colors.grey[900]!),
-                ),
+
                 child: TextFormField(
                   controller: widget.controller,
-                 // onSaved:  widget.onsaved!,
-                  //validator: widget.validator,
+                 onSaved:  widget.onSaved!,
+                  validator: widget.validator,
                   obscureText: widget.secure!,
                   keyboardType: widget.keyboardType,
                   decoration: InputDecoration(
+                    labelText: widget.hint,
+                    prefixIcon: Icon(
+                      widget.icondata,
+                      color: widget.color,
+                    ),
+                    suffixIcon: widget.suffix,
+                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(5)),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(30),
+                    ),
+                  ),
+                /*  decoration: InputDecoration(
                     hintText: widget.hint,
                     prefixIcon: Icon(
                       widget.icondata,
@@ -72,7 +86,7 @@ class _CustomTextFieldState extends State<CustomTextFormField> {
                     ),
                     suffixIcon: widget.suffix,
                     border: InputBorder.none,
-                  ),
+                  ),*/
                 ),
               ),
             ),

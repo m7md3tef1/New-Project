@@ -1,3 +1,4 @@
+import 'package:untitled1/presentation/Modules/DeleteProduct.dart';
 import 'package:untitled1/presentation/Modules/OrderDetails.dart';
 
 const splashPath='/';
@@ -17,3 +18,5 @@ const BMRScreenPath='/BMRScreenPath';
 const ChangeEmailPath='/ChangeEmailPath';
 const ChangePasswordPath='/ChangePasswordPath';
 const MyOrdersPath='/MyOrdersPath';
+const ShowPath='/ShowPath';
+const DeleteProductScreenPath ='/DeleteProductScreenPath';

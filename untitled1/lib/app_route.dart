@@ -5,6 +5,7 @@ import 'package:untitled1/presentation/Modules/AddressInfoScreen.dart';
 import 'package:untitled1/presentation/Modules/BMRScreen.dart';
 import 'package:untitled1/presentation/Modules/ChangeEmail.dart';
 import 'package:untitled1/presentation/Modules/ChangePassword.dart';
+import 'package:untitled1/presentation/Modules/DeleteProduct.dart';
 import 'package:untitled1/presentation/Modules/Favscreen.dart';
 import 'package:untitled1/presentation/Modules/HomeScreen.dart';
 import 'package:untitled1/presentation/Modules/IntroductionScreen.dart';
@@ -17,7 +18,6 @@ import 'package:untitled1/presentation/Modules/SignWithPhone.dart';
 import 'package:untitled1/presentation/Modules/SignupScreen.dart';
 import 'package:untitled1/presentation/Modules/mapScreen.dart';
 import 'package:untitled1/presentation/Modules/splash.dart';
-
 import 'constant/Screens.dart';
 
 
@@ -27,11 +27,12 @@ class AppRoute {
       case '/':
         return MaterialPageRoute(builder: (_) {
           bool onBoard = CacheHelper.getkey('onBoarding');
-          if (onBoard) {
+          if (onBoard){
             return const SplashScreen(
               nextScreen: SigninScreen(),
             );
-          } else {
+          }
+          else{
             return SplashScreen(
               nextScreen: IntroScreen(),
             );
@@ -69,6 +70,8 @@ class AppRoute {
         return MaterialPageRoute(builder: (_)=>const ChangePassword());
       case MyOrdersPath:
         return MaterialPageRoute(builder: (_)=>const MyOrdersScreen());
+      case DeleteProductScreenPath:
+        return MaterialPageRoute(builder: (_)=>const DeleteProductScreen());
     }
   }
 }

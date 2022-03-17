@@ -74,7 +74,7 @@ class _OtpPhoneScreenState extends State<OtpPhoneScreen> {
                     Row(
                       children: [
                         OTPTextField(
-                          length: 4,
+                          length: 6,
                           controller: otpController,
                           width: MediaQuery.of(context).size.width,
                           fieldWidth: 50,
@@ -117,10 +117,11 @@ class _OtpPhoneScreenState extends State<OtpPhoneScreen> {
                             onTap: () {
                               PhoneAuthCubit.get(context).submitOTP(otpController.toString());
                               print(otpController);
+                              Navigator.pushNamed(context, HomeScreenPath);
                             },
                             child: TextButton1(
                               name: 'Verify And Create Account',
-                              path: HomeScreenPath,
+
                             ),
                           ),
                         ],

@@ -1,21 +1,21 @@
 class Product {
-  var  id;
-  var  name;
+  String? id;
+  String? name;
   var price;
-  var Size;
-  var imgurl;
-  var Description;
-  var type;
+  String? Size;
+  String? imgurl;
+  String? Description;
+  String? type;
   int? counter = (1);
   Product(
       {this.type,
-      this.counter,
-      this.name,
-      this.price,
-      this.id,
-      this.Description,
-      this.imgurl,
-      this.Size});
+        this.counter,
+        this.name,
+        this.price,
+        this.id,
+        this.Description,
+        this.imgurl,
+        this.Size});
 
   Product.fromJson(Map<String, dynamic> json){
     name =json['name'];
@@ -24,17 +24,16 @@ class Product {
     Description=json['Description'];
    // imgurl=json['imgurl'];
     Size=json['size'];
-    //type=json['type'];
+   // type=json['type'];
   }
-  Map<String, dynamic> toMap(){
+  Map<String, dynamic>? toMap(){
     return{
       'id': id,
       'name': name,
       'prise': price,
       'Description': Description,
       'size': Size,
-    //  'imgurl': imgurl,
-     // 'type':type,
+     // 'imgurl': imgurl,
     };
   }
 }

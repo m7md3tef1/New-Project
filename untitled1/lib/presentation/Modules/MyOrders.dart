@@ -97,7 +97,7 @@ class _MyOrdersScreenState extends State<MyOrdersScreen> {
                                 Text(
                                   products[index].name.toString(),
                                   style: const TextStyle(
-                                      fontSize: 18, fontWeight: FontWeight.bold),
+                                      fontSize: 14, fontWeight: FontWeight.bold),
                                 ),
                                 const Text(
                                   'delivered',
@@ -131,7 +131,7 @@ class _MyOrdersScreenState extends State<MyOrdersScreen> {
                                         'Re-order',
                                         style: TextStyle(
                                             color: Colors.lightGreen,
-                                            fontSize: 18,
+                                            fontSize: 16,
                                             fontWeight: FontWeight.bold),
                                       )
                                     ],

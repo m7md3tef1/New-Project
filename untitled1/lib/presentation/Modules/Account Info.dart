@@ -151,7 +151,7 @@ decoration: BoxDecoration(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Container (
-                      width: 175,
+                      width: MediaQuery.of(context).size.width*.4,
                       decoration: BoxDecoration(
                           color: Colors.grey[400],
                           borderRadius: BorderRadius.circular(10)
@@ -159,16 +159,19 @@ decoration: BoxDecoration(
                       child: const Center(child:  Text('Male',style: TextStyle(fontSize: 18),)),
 
                     ),
-                    Container (
-                      width: 175,
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(10)
+                    Padding(
+                      padding: const EdgeInsets.only(top: 2,bottom: 2,right: 1),
+                      child: Container (
+                        width: MediaQuery.of(context).size.width*.5,
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(10)
+                        ),
+
+                        child:const Center(child:  Text('Female',style: TextStyle(fontSize: 18),)),
+
+
                       ),
-
-                      child:const Center(child:  Text('Female',style: TextStyle(fontSize: 18),)),
-
-
                     ),
                   ],
                 ),

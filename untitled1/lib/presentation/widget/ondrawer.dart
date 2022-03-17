@@ -68,6 +68,32 @@ class _OnDrawerState extends State<OnDrawer> {
             padding: const EdgeInsets.all(8.0),
             child: InkWell(
               onTap: (){
+                Navigator.pushNamed(context, DeleteProductScreenPath);
+              },
+              child: Row(
+                children:const [
+                  Padding(
+                    padding:  EdgeInsets.all(8.0),
+                    child: Icon(
+                      Icons.store,
+                      color: Colors.lightGreen,
+                    ),
+                  ),
+                  Padding(
+                    padding:  EdgeInsets.all(8.0),
+                    child: Text(
+                      'Products',
+                      style: TextStyle(fontSize: 20),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: InkWell(
+              onTap: (){
                 Navigator.pushNamed(context, MyOrdersPath);
               },
               child: Row(
