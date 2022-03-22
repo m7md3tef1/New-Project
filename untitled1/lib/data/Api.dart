@@ -1,10 +1,25 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 import '../models/Product.dart';
-List<Product>? products;
-getProducts() {
-  return FirebaseFirestore.instance.collection('Product').doc().get().then((value) {
-    value=products as DocumentSnapshot<Map<String, dynamic>>;
-    print(value);
-  });
+
+class ProductApi {
+  List<Product>? products;
+  ProductApi(this.products);
+  getProducts() async {
+    await FirebaseFirestore.instance.collection('Product').get().then((value) {
+      value.docs.forEach((element) {
+        Product p =Product.fromJson(element.data());
+        p.id = element.id;
+        products?.add(p);
+      });
+    });
+    return products;
+  }
+}
+
+class DeleteProductApi{
+  Product? p;
+  deleteProduct()async {
+    await FirebaseFirestore.instance.collection('Products').doc(p!.id).delete();
+  }
 }

@@ -11,3 +11,10 @@ class GetDataFailed extends DataProductState{
   GetDataFailed(this.error);
 }
 
+class deleteSuccess extends DataProductState{}
+
+class deleteFailed extends DataProductState{
+   final String error;
+
+   deleteFailed(this.error);
+}

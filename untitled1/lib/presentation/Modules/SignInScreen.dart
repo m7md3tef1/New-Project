@@ -303,12 +303,17 @@ class _SigninScreenState extends State<SigninScreen> {
                                 color: Colors.red,
                               ),
                             ),
-                            const Image(
-                              image: AssetImage(
-                                'images/facebook.png',
+                            InkWell(
+                              onTap: (){
+                                Navigator.pushNamed(context,  'ProductDetails');
+                              },
+                              child: const Image(
+                                image: AssetImage(
+                                  'images/facebook.png',
+                                ),
+                                width: 50,
+                                height: 50,
                               ),
-                              width: 50,
-                              height: 50,
                             ),
                             const Image(
                               image: AssetImage('images/Apple.png'),

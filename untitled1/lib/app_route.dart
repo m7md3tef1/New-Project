@@ -55,7 +55,7 @@ class AppRoute {
       case FavScreenPath:
         return MaterialPageRoute(builder: (_)=>const FavScreen());
       case OrderDetailsPath:
-        return MaterialPageRoute(builder: (_)=>const  OrderDetails());
+        return MaterialPageRoute(builder: (_)=>  OrderDetails());
       case SettingScreenPath:
         return MaterialPageRoute(builder: (_)=>const SettingScreen());
       case AccontInfoPath:

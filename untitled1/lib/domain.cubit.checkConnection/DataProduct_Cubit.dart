@@ -1,14 +1,17 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:untitled1/data/Api.dart';
+import 'package:untitled1/data/Api.dart';
 import 'package:untitled1/domain.cubit.checkConnection/DataProduct_State.dart';
 import 'package:untitled1/models/Product.dart';
 import 'package:untitled1/presentation/dialouges/toast.dart';
 
+import '../data/Api.dart';
+import '../data/Api.dart';
+
 class DataProductCubit extends Cubit<DataProductState>{
   DataProductCubit( ) : super(InitialStateData());
   static DataProductCubit get(context)=>BlocProvider.of(context);
-  Product? product;
+ // Product? product;
  /* void getProducts() {
     emit(GetDataLoading());
     FirebaseFirestore.instance.collection('Product').doc().get().then((value){
@@ -20,7 +23,7 @@ class DataProductCubit extends Cubit<DataProductState>{
       emit(GetDataFailed(onError.toString()));
     });
   }*/
- void ProductGet(
+ /*void ProductGet(
       {
         required String name,
         required String price,
@@ -46,6 +49,29 @@ class DataProductCubit extends Cubit<DataProductState>{
       showToast(msg: onError.toString(),state: ToastedStates.ERROR);
       emit(GetDataFailed(onError));
     });
-  }
+  }*/
+List<Product> ProductList=[];
+GetAllProduct(){
+  ProductApi api =ProductApi(ProductList);
+  api.getProducts().then((value){
+    ProductList=value;
+    emit(GetDataSuccess());
+  }).catchError((onError){
+    showToast(msg: onError.toString(),state: ToastedStates.ERROR);
+    emit(GetDataFailed(onError));
+  });
+}
 
+  Product? Delete;
+DeleteProduct(){
+  DeleteProductApi api =DeleteProductApi();
+  api.deleteProduct().then((value){
+    Delete?.id=value;
+    GetAllProduct();
+    emit(deleteSuccess());
+  }).catchError((onError){
+    showToast(msg: onError.toString(),state: ToastedStates.ERROR);
+    emit(deleteFailed(onError));
+  });
+}
 }

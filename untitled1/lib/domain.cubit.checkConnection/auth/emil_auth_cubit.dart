@@ -6,23 +6,24 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:untitled1/constant/Screens.dart';
 import 'package:untitled1/domain.cubit.checkConnection/auth/emil_auth_state.dart';
 import 'package:untitled1/presentation/dialouges/toast.dart';
-
 import '../../models/Product.dart';
-
-
 class EmailAuthCubit extends Cubit<EmailAuthStates> {
   EmailAuthCubit() : super(InitialState());
   static EmailAuthCubit get(context) => BlocProvider.of(context);
   FirebaseAuth auth = FirebaseAuth.instance;
   var fireStore = FirebaseFirestore.instance;
   Product product = Product();
-  SignInAuth(var email,var password,context){
+  SignInAuth(var email,var password,context ){
+    Product p  = Product();
+    product.id=email;
     emit(SignInLoading());
-    auth.signInWithEmailAndPassword(email: email,password: password).then((value) async {
+   auth.signInWithEmailAndPassword(email: email,password: password,).then((value) async {
       if (value != null) {
-        await FirebaseFirestore.instance.collection('Login In').doc(product.id).set({
+        await FirebaseFirestore.instance.collection('Login In').doc(product.id ).set({
           'Password': password.toString(),
           'Email': email.toString(),
+
+
 
         });
         showToast(msg: 'Done', state: ToastedStates.SUCCESS);
@@ -38,17 +39,11 @@ class EmailAuthCubit extends Cubit<EmailAuthStates> {
       showToast(msg: onError.toString(), state: ToastedStates.WARNING);
       emit(SignInFailed(onError.toString()));
       print(onError.toString());
-
-
     });
-
-
   }
-
   forgetPass(email)async{
     await auth.sendPasswordResetEmail(email: email);
   }
-
 
  /* SignUpAuth(var email,var password,context) {
     emit(SignUpLoading());
@@ -73,10 +68,8 @@ class EmailAuthCubit extends Cubit<EmailAuthStates> {
 
   signup(email, password, name,Phone,context) async {
     emit(SignUpLoading());
-
     var u = await auth.createUserWithEmailAndPassword(
       email: email, password: password,);
-
          auth.currentUser?.sendEmailVerification();
          fireStore.collection('Users').doc(u.user?.uid).set(
             {

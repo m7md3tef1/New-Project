@@ -22,9 +22,7 @@ class Product {
     price=json['prise'];
     id=json['id'];
     Description=json['Description'];
-   // imgurl=json['imgurl'];
     Size=json['size'];
-    //type=json['type'];
   }
   Map<String, dynamic> toMap(){
     return{
@@ -33,8 +31,6 @@ class Product {
       'prise': price,
       'Description': Description,
       'size': Size,
-    //  'imgurl': imgurl,
-     // 'type':type,
     };
   }
 }

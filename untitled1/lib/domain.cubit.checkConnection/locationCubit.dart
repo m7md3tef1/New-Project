@@ -33,9 +33,9 @@ class LocationCubit extends Cubit<LocationState>{
         emit(requestPermissionLocation());
       }
     });
-
-
   }
+
+
   getLocation()async{
      emit(getLocationLoading());
     Location().getLocation().then((value) {
@@ -45,11 +45,13 @@ class LocationCubit extends Cubit<LocationState>{
       print(value.longitude);
       emit(getLocationLocation());
       GeoCode().reverseGeocoding(latitude:latitude, longitude: longitude).then((value) {
+
         print(value.streetAddress);
         print(value.countryCode);
         print(value.countryName);
         print(value.city);
         street=value.city;
+
         emit(getLocationsuccess());
       }).catchError((onError){
         emit(getLocationfailed());

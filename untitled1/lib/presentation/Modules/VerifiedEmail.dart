@@ -25,7 +25,7 @@ class _VerifiedEmailState extends State<VerifiedEmail> {
           title:const Text( 'News Feed'),
         ),
         body:ConditionalBuilder(
-          condition: DataProductCubit.get(context).product !=null,
+          condition: DataProductCubit.get(context).ProductList !=null,
           builder: (context){
             return Column(
                 children: [

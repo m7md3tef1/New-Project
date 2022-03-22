@@ -5,6 +5,7 @@ import 'package:untitled1/Blocs/FavBlocCubit.dart';
 import 'package:untitled1/Blocs/FavBlocState.dart';
 import 'package:untitled1/constant/Screens.dart';
 import 'package:untitled1/models/Product.dart';
+import 'package:untitled1/presentation/Modules/ProductDetails.dart';
 import '../widget/ondrawer.dart';
 
 
@@ -60,17 +61,17 @@ class _HomeScreenState extends State<HomeScreen> {
     'mix grill',
     'mix seafood',
   ];
-  List price = ['115 EGY', '115 EGY'];
+  List price = ['115' , '115' ];
   List<Product> products = [
     Product(
       imgurl: 'images/photo_2021-07-02_15-06-19.png',
       name: 'mix grill',
-      price: '115 EGY',
+      price: '115',
     ),
     Product(
       imgurl: 'images/photo_2021-07-02_15-06-18.png',
       name: 'mix seafood',
-      price: '115 EGY',
+      price: '115' ,
     ),
   ];
 
@@ -78,12 +79,12 @@ class _HomeScreenState extends State<HomeScreen> {
     Product(
       imgurl: 'images/photo_2021-07-02_15-06-20.png',
       name: 'kabab hala',
-      price: '115 EGY',
+      price: '115',
     ),
     Product(
       imgurl: 'images/photo_2021-07-06_17-26-01.png',
       name: 'beef',
-      price: '115 EGY',
+      price: '115' ,
     ),
   ];
   List categoryimage = [
@@ -333,15 +334,25 @@ class _HomeScreenState extends State<HomeScreen> {
                                           },
                                           child: Badge(
                                             badgeColor: Colors.grey[100]!,
-                                            badgeContent: const Icon(
-                                              Icons.favorite,
-                                              color: Colors.red,
+                                            badgeContent: InkWell(
+                                              onTap: () {
+                                                Navigator.pushNamed(context, FavScreenPath);
+                                              },
+                                              child: const Icon(
+                                                Icons.favorite,
+                                                color: Colors.red,
+                                              ),
                                             ),
                                             child: Column(
                                               children: [
                                                 InkWell(
                                                   onTap: () {
-                                                    Navigator.pushNamed(context, FavScreenPath);
+                                                    Navigator.push(context,
+                                                        MaterialPageRoute(builder: (context) {
+                                                          return ProductDetails(
+                                                            product: products[index],
+                                                          );
+                                                        }));
                                                   },
                                                   child: Container(
                                                     color: Colors.white,
@@ -396,9 +407,9 @@ class _HomeScreenState extends State<HomeScreen> {
                                                             ),
                                                             Hero(
                                                               tag:
-                                                                  "price-${price[index]}",
+                                                                  "price-${price[index].toString()}",
                                                               child: Text(
-                                                                price[index],
+                                                                price[index].toString()+' EGY',
                                                                 style: const TextStyle(
                                                                     color: Colors
                                                                         .lightGreen,
@@ -454,14 +465,24 @@ class _HomeScreenState extends State<HomeScreen> {
                                       },
                                       child: Badge(
                                         badgeColor: Colors.grey[100]!,
-                                        badgeContent: const Icon(
-                                          Icons.favorite_border_outlined,
+                                        badgeContent: InkWell(
+                                          onTap: () {
+                                          Navigator.pushNamed(context, FavScreenPath);
+                                        },
+                                          child: const Icon(
+                                            Icons.favorite_border_outlined,
+                                          ),
                                         ),
                                         child: Column(
                                           children: [
                                             InkWell(
                                               onTap: () {
-                                                Navigator.pushNamed(context, FavScreenPath);
+                                                Navigator.push(context,
+                                                    MaterialPageRoute(builder: (context) {
+                                                      return ProductDetails(
+                                                        product: products[index],
+                                                      );
+                                                    }));
                                               },
                                               child: Container(
                                                 color: Colors.white,
@@ -515,9 +536,9 @@ class _HomeScreenState extends State<HomeScreen> {
                                                         ),
                                                         Hero(
                                                           tag:
-                                                              "price-${price[index]}",
+                                                              "price-${price[index].toString()}",
                                                           child: Text(
-                                                            price[index],
+                                                            price[index].toString()+' EGY',
                                                             style: const TextStyle(
                                                                 color: Colors
                                                                     .lightGreen,
@@ -730,9 +751,9 @@ class _HomeScreenState extends State<HomeScreen> {
                                                   ),
                                                 ),
                                                 Hero(
-                                                  tag: "price-${price[index]}",
+                                                  tag: "price-${price[index].toString()}",
                                                   child: Text(
-                                                    price[index],
+                                                    price[index].toString()+' EGY',
                                                     style: const TextStyle(
                                                         color:
                                                             Colors.lightGreen,
