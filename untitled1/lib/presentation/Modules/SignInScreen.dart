@@ -196,6 +196,17 @@ class _SigninScreenState extends State<SigninScreen> {
                             ),
                           ],
                         ),
+                        if(state is SignInLoading)
+                 const Padding(
+                   padding:  EdgeInsets.all(20.0),
+                   child: CircularProgressIndicator(
+                     color: Colors.lightGreen,
+                     strokeWidth: 6,
+
+                   ),
+                 )
+                        else
+
                         InkWell(
                           onTap: () async {
                             if (Signinkey.currentState!.validate()) {
@@ -222,6 +233,7 @@ class _SigninScreenState extends State<SigninScreen> {
                             ],
                           ),
                         ),
+
                         Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Center(

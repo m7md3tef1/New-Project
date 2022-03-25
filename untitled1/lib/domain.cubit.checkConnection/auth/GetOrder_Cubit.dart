@@ -8,8 +8,9 @@ import 'package:untitled1/presentation/dialouges/toast.dart';
 class GetOrderCubit extends Cubit<DataOrderState> {
   GetOrderCubit() : super(InitialStateOrder());
   static GetOrderCubit get(context) => BlocProvider.of(context);
-  List<Product> OrderList = [];
+  List<Order> OrderList = [];
   GetAllOrders() {
+    emit(GetOrderLoading());
     OrderApi api = OrderApi(OrderList);
     api.getOrders().then((value) {
       OrderList = value;

@@ -10,11 +10,19 @@ class GetDataFailed extends DataProductState{
 
   GetDataFailed(this.error);
 }
-
+class deleteLoading extends DataProductState{}
 class deleteSuccess extends DataProductState{}
 
 class deleteFailed extends DataProductState{
    final String error;
 
    deleteFailed(this.error);
+}
+class GetOrderLoading extends DataProductState{}
+class GetOrderSuccess extends DataProductState{}
+
+class GetOrderFailed extends DataProductState{
+  final String error;
+
+  GetOrderFailed(this.error);
 }

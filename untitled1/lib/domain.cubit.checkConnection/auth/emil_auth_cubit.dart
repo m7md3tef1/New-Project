@@ -14,6 +14,7 @@ class EmailAuthCubit extends Cubit<EmailAuthStates> {
   var fireStore = FirebaseFirestore.instance;
   Product product = Product();
   SignInAuth(var email,var password,context ){
+    emit(SignInLoading());
     Product p  = Product();
     product.id=email;
     emit(SignInLoading());
@@ -22,6 +23,7 @@ class EmailAuthCubit extends Cubit<EmailAuthStates> {
         await FirebaseFirestore.instance.collection('Login In').doc(product.id ).set({
           'Password': password.toString(),
           'Email': email.toString(),
+          'id':p.id,
 
 
 
@@ -44,27 +46,6 @@ class EmailAuthCubit extends Cubit<EmailAuthStates> {
   forgetPass(email)async{
     await auth.sendPasswordResetEmail(email: email);
   }
-
- /* SignUpAuth(var email,var password,context) {
-    emit(SignUpLoading());
-    auth.createUserWithEmailAndPassword(email: email, password: password).then((value) async{
-      if(value != null)
-      {
-        showToast(msg: 'Done', state: ToastedStates.SUCCESS);
-        Navigator.pushNamed(
-            context, signinPath);
-        emit(SignUpSuccess());
-      }else{
-        showToast(msg: onError.toString(), state: ToastedStates.ERROR);
-        emit(SignUpFailed());
-        print(onError.toString());
-
-
-      }
-
-    });
-
-  }*/
 
   signup(email, password, name,Phone,context) async {
     emit(SignUpLoading());

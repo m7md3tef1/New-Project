@@ -3,12 +3,12 @@ import '../../models/Order.dart';
 import '../../models/Product.dart';
 
 class OrderApi {
-  List<Product>? order;
+  List<Order>? order;
   OrderApi(this.order);
   getOrders() async {
     await FirebaseFirestore.instance.collection('Order').get().then((value) {
       value.docs.forEach((element) {
-        Product O = Product.fromJson(element.data());
+        Order O = Order.fromJson(element.data());
         O.id = element.id;
         order?.add(O);
       });

@@ -133,6 +133,23 @@ class _OrderDetailsState extends State<OrderDetails> {
                         ],
                       ),
                     ),
+                    if(state is GetOrderSuccess)
+                      Container(
+                        height: 210,
+                        child: Center(
+                          child: Column
+                            (
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: const [
+                              SizedBox(
+                                height: 20,
+                              ),
+                              Center(child: Text('No Orders',style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold),))
+                            ],
+                          ),
+                        ),
+                      )
+                      else
                     Container(
                       height: 210,
                       width: double.infinity,

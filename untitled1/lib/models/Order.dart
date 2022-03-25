@@ -1,3 +1,5 @@
+import 'package:untitled1/models/Product.dart';
+
 class Order {
   String? id;
   var name;
@@ -12,16 +14,16 @@ class Order {
   Order.fromJson(Map<String, dynamic> json){
     name =json['name'];
     price=json['prise'];
-    quantity=json['quantity'];
+   // quantity=json['quantity'];
     id=json['id'];
     imgurl=json['image'];
   }
   Map<String, dynamic> toMap(){
     return{
-      'id': id,
+      //'id': id ,
       'name': name,
       'price': price,
-      'quantity':quantity,
+      //'quantity':quantity,
       'image':imgurl
     };
   }

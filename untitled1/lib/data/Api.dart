@@ -23,3 +23,10 @@ class DeleteProductApi{
     await FirebaseFirestore.instance.collection('Products').doc(p!.id).delete();
   }
 }
+
+class UpdateProductApi{
+  Product? p;
+  deleteProduct()async {
+    await FirebaseFirestore.instance.collection('Products').doc(p!.id).update(p!.toMap());
+  }
+}
